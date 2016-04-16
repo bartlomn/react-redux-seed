@@ -12,13 +12,8 @@ export const COUNTER_TRIPLE = 'COUNTER_TRIPLE';
 // If you're unfamiliar with Flow, you are completely welcome to avoid annotating your code, but
 // if you'd like to learn more you can check out: flowtype.org.
 // DOUBLE NOTE: there is currently a bug with babel-eslint where a `space-infix-ops` error is
-// incorrectly thrown when using arrow functions, hence the oddity.
-export function increment (value: number = 1): Action {
-  return {
-    type: COUNTER_INCREMENT,
-    payload: value
-  };
-}
+// incorrectly thrown when using arrow functions
+export const increment = ( value : number = 1 ): Action => ({ type: COUNTER_INCREMENT, payload: value });
 
 // This is a thunk, meaning it is a function that immediately
 // returns a function for lazy evaluation. It is incredibly useful for
@@ -27,19 +22,19 @@ export function increment (value: number = 1): Action {
 // you'd probably want to dispatch an action of COUNTER_DOUBLE and let the
 // reducer take care of this logic.
 export const doubleAsync = (): Function => {
-  return (dispatch: Function, getState: Function): Promise => {
-    return new Promise((resolve: Function): void => {
-      setTimeout(() => {
-        dispatch(increment(getState().counter));
+  return ( dispatch: Function, getState: Function ): Promise => {
+    return new Promise( ( resolve: Function ): void => {
+      setTimeout( () => {
+        dispatch( increment( getState().counter ) );
         resolve();
-      }, 200);
+      }, 200 );
     });
   };
 };
 
 // This is a Saga
-// @see http://yelouafi.github.io/redux-saga/
-export const tripleSaga = () => ({ type: COUNTER_TRIPLE });
+// @see http://yelouafi.github.io/redux-saga/ą
+export const tripleSaga = (): Action => ({ type: COUNTER_TRIPLE });
 
 export const actions = {
   increment,
@@ -51,15 +46,15 @@ export const actions = {
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [COUNTER_INCREMENT]: (state: number, action: {payload: number}): number => state + action.payload
+  [ COUNTER_INCREMENT ]: ( state: number, action: {payload: number}): number => state + action.payload
 };
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 const initialState = 0;
-export default function counterReducer (state: number = initialState, action: Action): number {
-  const handler = ACTION_HANDLERS[action.type];
+export default function counterReducer ( state: number = initialState, action: Action ): number {
+  const handler = ACTION_HANDLERS[ action.type ];
 
-  return handler ? handler(state, action) : state;
+  return handler ? handler( state, action ) : state;
 }

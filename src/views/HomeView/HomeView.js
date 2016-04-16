@@ -46,7 +46,7 @@ export class HomeView extends React.Component<void, Props, void> {
         <h2>
           Sample Counter:
           {' '}
-          <span className={classes['counter--green']}>{this.props.counter}</span>
+          <span className={classes[ 'counter--green' ]}>{this.props.counter}</span>
         </h2>
         <button className='btn btn-default' onClick={this.props.increment}>
           Increment
@@ -63,12 +63,12 @@ export class HomeView extends React.Component<void, Props, void> {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = ( state ) => ({
   counter: state.counter
 });
 
-export default connect((mapStateToProps), {
-  increment: () => increment(1),
+export default connect( ( mapStateToProps ), {
+  increment: () => increment( 1 ),
   doubleAsync,
   tripleSaga
-})(HomeView);
+})( HomeView );

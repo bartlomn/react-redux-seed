@@ -4,10 +4,10 @@ module.exports = {
   },
 
   beforeInstall () {
-    console.log('Before installation hook!');
+    console.log( 'Before installation hook!' );
   },
 
   afterInstall () {
-    console.log('After installation hook!');
+    console.log( 'After installation hook!' );
   }
 };
