@@ -3,6 +3,7 @@
 // Constants
 // ------------------------------------
 export const COUNTER_INCREMENT = 'COUNTER_INCREMENT';
+export const COUNTER_TRIPLE = 'COUNTER_TRIPLE';
 
 // ------------------------------------
 // Actions
@@ -36,9 +37,14 @@ export const doubleAsync = (): Function => {
   };
 };
 
+// This is a Saga
+// @see http://yelouafi.github.io/redux-saga/
+export const tripleSaga = () => ({ type: COUNTER_TRIPLE });
+
 export const actions = {
   increment,
-  doubleAsync
+  doubleAsync,
+  tripleSaga
 };
 
 // ------------------------------------
