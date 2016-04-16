@@ -308,5 +308,6 @@ While this is common to any sizable application, it's worth noting for those who
 Thank You
 ---------
 
-This project is mostly based on the orignal work by [David Zukowski](hhttps://github.com/davezuko)
+This project is mostly based on the orignal work by [David Zukowski](https://github.com/davezuko) 
+_
 
