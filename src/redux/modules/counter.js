@@ -58,3 +58,4 @@ export default function counterReducer ( state: number = initialState, action: A
 
   return handler ? handler( state, action ) : state;
 }
+

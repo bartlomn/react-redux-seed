@@ -27,13 +27,14 @@ describe('(View) Home', function () {
     _props = {
       counter: 0,
       ...bindActionCreators({
+        tripleSaga: (_spies.tripleSaga = sinon.spy()),
         doubleAsync: (_spies.doubleAsync = sinon.spy()),
         increment: (_spies.increment = sinon.spy())
       }, _spies.dispatch = sinon.spy())
     }
 
-    _component = shallowRenderWithProps(_props)
-    _rendered = renderWithProps(_props)
+    _component = shallowRenderWithProps(_props);
+    _rendered = renderWithProps(_props);
   })
 
   it('Should render as a <div>.', function () {
@@ -63,10 +64,10 @@ describe('(View) Home', function () {
     expect(h2.textContent).to.match(/5$/)
   })
 
-  it('Should render exactly two buttons.', function () {
+  it('Should render exactly three buttons.', function () {
     const wrapper = mount(<HomeView {..._props} />)
-
-    expect(wrapper).to.have.descendants('.btn')
+    debugger;
+    expect(wrapper.find('.btn')).to.have.length( 3 );
   })
 
   describe('An increment button...', function () {
@@ -94,6 +95,25 @@ describe('(View) Home', function () {
     beforeEach(() => {
       _btn = TestUtils.scryRenderedDOMComponentsWithTag(_rendered, 'button')
         .filter(a => /Double/.test(a.textContent))[0]
+    })
+
+    it('should be rendered.', function () {
+      expect(_btn).to.exist
+    })
+
+    it('should dispatch an action when clicked.', function () {
+      _spies.dispatch.should.have.not.been.called
+      TestUtils.Simulate.click(_btn)
+      _spies.dispatch.should.have.been.called
+    })
+  })
+
+  describe('A Triple (Saga) button...', function () {
+    let _btn
+
+    beforeEach(() => {
+      _btn = TestUtils.scryRenderedDOMComponentsWithTag(_rendered, 'button')
+        .filter(a => /Triple/.test(a.textContent))[0]
     })
 
     it('should be rendered.', function () {
