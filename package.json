@@ -1,7 +1,7 @@
 {
   "name": "react-redux-seed",
   "version": "0.0.1",
-  "description": "Get started with React, Redux, and React-Router!",
+  "description": "Get started with React, Redux, Sagas, and React-Router!",
   "main": "index.js",
   "engines": {
     "node": ">=4.2.0",

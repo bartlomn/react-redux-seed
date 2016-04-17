@@ -289,6 +289,16 @@ Have more questions? Feel free to submit an issue or join the Gitter chat!
 Troubleshooting
 ---------------
 
+### Git hooks temperamental in SourceTree / Tower on osX
+
+It's an effect of the fact that terminals and full .apps have compeletely different environments (and PATH variables). See [this issue](https://answers.atlassian.com/questions/140339/sourcetree-hook-failing-because-paths-don-t-seem-to-be-set-correctly) for more details. 
+
+For a quick fix open your gui client from CLI on osX, like so
+```
+open /Applications/SourceTree.app/Contents/MacOS/SourceTree
+```
+Alternatively symlink your binaries from `/usr/local/bin` into `/bin/`. Not ideal but seems to fix it.
+
 ### Internationalization Support
 
 In keeping with the goals of this project, no internationalization support is provided out of the box. However, [juanda99](https://github.com/juanda99) has been kind enough to maintain a fork of this repo with internationalization support, [check it out!](https://github.com/juanda99/react-redux-starter-kit)
