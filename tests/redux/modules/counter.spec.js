@@ -6,6 +6,7 @@ import {
 } from 'redux/modules/counter'
 
 describe('(Redux Module) Counter', function () {
+
   it('Should export a constant COUNTER_INCREMENT.', function () {
     expect(COUNTER_INCREMENT).to.equal('COUNTER_INCREMENT')
   })
